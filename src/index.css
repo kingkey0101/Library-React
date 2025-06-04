@@ -112,6 +112,10 @@ button:active {
   color: #7342d6;
 }
 
+.nav__link--books{
+  border: 3px solid #7342d6;
+}
+
 .nav__list {
   margin-left: 16px;
   display: flex;
