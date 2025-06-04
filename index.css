@@ -430,8 +430,6 @@ FEATURES
 .book__title {
   font-size: 20px;
   margin-bottom: 8px;
-  display: flex;
-  justify-content: flex-start;
 }
 
 .book__title--link {
@@ -636,7 +634,6 @@ select {
 .book__price {
   font-size: 16px;
   margin: 8px 0 24px 0;
-  display: flex;
 }
 
 .link__breadcrumbs {
