@@ -597,6 +597,7 @@ select {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  
 }
 
 .book__selected--top {
