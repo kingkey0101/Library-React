@@ -28,6 +28,10 @@ function App() {
     );
   }
 
+  function removeItem(item) {
+    setCart(cart.filter((book) => book.id !== item.id));
+  }
+
   useEffect(() => {
     console.log(cart);
   }, [cart]);
@@ -39,6 +43,7 @@ function App() {
     <Router>
       <div className="App">
         <Nav />
+        <div className="main__content"> 
         <Route path="/" exact component={Home} />
         <Route path="/books" exact render={() => <Books books={books} />} />
         <Route
@@ -51,9 +56,15 @@ function App() {
         <Route
           path="/cart"
           render={() => (
-            <Cart books={books} cart={cart} changeQuantity={changeQuantity} />
+            <Cart
+              books={books}
+              cart={cart}
+              changeQuantity={changeQuantity}
+              removeItem={removeItem}
+            />
           )}
         />
+        </div>
         <Footer />
       </div>
     </Router>

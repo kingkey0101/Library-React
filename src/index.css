@@ -12,6 +12,12 @@
   min-height: 100vh;
 }
 
+.main__content{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -255,12 +261,10 @@ header {
 .header__img--wrapper {
   padding: 20px;
 
-  /* Added this after the tutorial to 
-  show it over the wave on larger screens */
+  /* Added this to show it over the wave on larger screens */
   z-index: 50;
   
-  /* Added this after the tutorial to 
-  make landing page responsive on laptops */
+  /* Added this to make landing page responsive on laptops */
   max-height: 50vh;
 }
 
