@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import emptyCart from "../assets/empty_cart.svg";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 const Cart = ({ cart, changeQuantity, removeItem }) => {
   const total = () => {
@@ -29,7 +31,7 @@ const Cart = ({ cart, changeQuantity, removeItem }) => {
                 <div className="cart__body">
                   {cart.map((book) => {
                     return (
-                      <div className="cart__item">
+                      <div className="cart__item" key={book.id}>
                         <div className="cart__book">
                           <img
                             src={book.url}
@@ -74,29 +76,40 @@ const Cart = ({ cart, changeQuantity, removeItem }) => {
                     );
                   })}
                 </div>
+                {cart.length === 0 && (
+                  <div className="cart__empty">
+                    <img src={emptyCart} alt="" className="cart__empty--img" />
+                    <h2>You don't have any books in your cart!</h2>
+                    <Link to="/books">
+                      <button className="btn">Browse books</button>
+                    </Link>
+                  </div>
+                )}
               </div>
             </div>
           </div>
-          <div className="total">
-            <div className="total__item total__sub-total">
-              <span>Subtotal</span>
-              <span>${(total() * 0.9).toFixed(2)}</span>
+          {cart.length > 0 && (
+            <div className="total">
+              <div className="total__item total__sub-total">
+                <span>Subtotal</span>
+                <span>${(total() * 0.9).toFixed(2)}</span>
+              </div>
+              <div className="total__item total__tax">
+                <span>Tax</span>
+                <span>${(total() * 0.1).toFixed(2)}</span>
+              </div>
+              <div className="total__item total__price">
+                <span>Total</span>
+                <span>${total().toFixed(2)}</span>
+              </div>
+              <button
+                className="btn btn__checkout no-cursor"
+                onClick={() => alert("not done with that yet")}
+              >
+                Proceed to checkout
+              </button>
             </div>
-            <div className="total__item total__tax">
-              <span>Tax</span>
-              <span>${(total() * 0.1).toFixed(2)}</span>
-            </div>
-            <div className="total__item total__price">
-              <span>Total</span>
-              <span>${total().toFixed(2)}</span>
-            </div>
-            <button
-              className="btn btn__checkout no-cursor"
-              onClick={() => alert("not done with that yet")}
-            >
-              Proceed to checkout
-            </button>
-          </div>
+          )}
         </main>
       </div>
     </div>

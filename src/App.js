@@ -32,6 +32,14 @@ function App() {
     setCart(cart.filter((book) => book.id !== item.id));
   }
 
+  function numberOfItems() {
+    let counter = 0;
+    cart.forEach((item) => {
+      counter += item.quantity;
+    });
+    return counter;
+  }
+
   useEffect(() => {
     console.log(cart);
   }, [cart]);
@@ -42,28 +50,28 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <Nav />
-        <div className="main__content"> 
-        <Route path="/" exact component={Home} />
-        <Route path="/books" exact render={() => <Books books={books} />} />
-        <Route
-          path="/books/:id"
-          exact
-          render={() => (
-            <BookInfo books={books} addToCart={addToCart} cart={cart} />
-          )}
-        />
-        <Route
-          path="/cart"
-          render={() => (
-            <Cart
-              books={books}
-              cart={cart}
-              changeQuantity={changeQuantity}
-              removeItem={removeItem}
-            />
-          )}
-        />
+        <Nav numberOfItems={numberOfItems()}/>
+        <div className="main__content">
+          <Route path="/" exact component={Home} />
+          <Route path="/books" exact render={() => <Books books={books} />} />
+          <Route
+            path="/books/:id"
+            exact
+            render={() => (
+              <BookInfo books={books} addToCart={addToCart} cart={cart} />
+            )}
+          />
+          <Route
+            path="/cart"
+            render={() => (
+              <Cart
+                books={books}
+                cart={cart}
+                changeQuantity={changeQuantity}
+                removeItem={removeItem}
+              />
+            )}
+          />
         </div>
         <Footer />
       </div>
