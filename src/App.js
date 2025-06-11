@@ -7,6 +7,7 @@ import Books from "./Pages/Books";
 import { books } from "./data";
 import BookInfo from "./Pages/BookInfo";
 import Cart from "./Pages/Cart";
+import { SpeedInsights } from "@vercel/speed-insights/react"
 
 function App() {
   const [cart, setCart] = useState([]);
@@ -74,6 +75,7 @@ function App() {
           />
         </div>
         <Footer />
+        <SpeedInsights />
       </div>
     </Router>
   );
