@@ -8,6 +8,7 @@ import { books } from "./data";
 import BookInfo from "./Pages/BookInfo";
 import Cart from "./Pages/Cart";
 import { SpeedInsights } from "@vercel/speed-insights/react"
+import { Analytics } from "@vercel/analytics/react"
 
 function App() {
   const [cart, setCart] = useState([]);
@@ -75,6 +76,7 @@ function App() {
           />
         </div>
         <Footer />
+        <Analytics />
         <SpeedInsights />
       </div>
     </Router>
